@@ -29,7 +29,7 @@ function lqc_enqueue(){
                         plugin_dir_url(__FILE__)."js/carrousel.js",
                         array(),
                         $version_js,
-                        false);
+                        true);
 }
 
 add_action('wp_enqueue_scripts', 'lqc_enqueue');
@@ -37,8 +37,11 @@ add_action('wp_enqueue_scripts', 'lqc_enqueue');
 
  function genere_boite(){
     $contenu = "
-
-        <div class='carrousel'>Carrousel</div>";
+        <button class='btn_modale'>boite modale</button>
+        <div class='carrousel'>Carrousel
+        <button class='btn_fermer'>X</button>
+        </div>";
+        
     
     return $contenu;
  }
