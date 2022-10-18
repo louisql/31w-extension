@@ -39,7 +39,9 @@ add_action('wp_enqueue_scripts', 'lqc_enqueue');
     $contenu = "
         <button class='btn_modale'>boite modale</button>
         <div class='carrousel'>Carrousel
-        <button class='btn_fermer'>X</button>
+            <button class='btn_fermer'>X</button>
+            <figure class='carrousel__figure'></figure>
+            <form class='carrousel__form'></form>
         </div>";
         
     
