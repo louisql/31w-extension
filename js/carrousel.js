@@ -25,8 +25,17 @@
     for (const elmImg of elmGalerieImg){
         console.log(elmImg.getAttribute('src'));
 
-        ajouter_img_carrousel();
-        ajouter_radio_carrousel();
+        ajouter_img_carrousel(elmImg);
+        // ajouter_radio_carrousel();
+
+    }
+
+    function ajouter_img_carrousel(elmImg){
+        //elmImg représente une image de la galerie
+        let elmCarrousel__figure__img = document.createElement('img');
+        elmCarrousel__figure__img.setAttribute('src', elmImg.getAttribute('src'))
+        elmCarrousel__figure__img.classList.add('carrousel__figure__img')
+        elmCarrousel__figure.appendChild(elmCarrousel__figure__img);
     }
 
     elmBtnModale.addEventListener('mousedown', function(){
