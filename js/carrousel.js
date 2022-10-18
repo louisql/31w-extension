@@ -2,7 +2,7 @@
     console.log("carrousel")
     /*---------------------------------------- Initialisation des compteurs */
     let index = 0;
-
+    let dernierIndex = -1;
 
     /*---------------------------------------- Les éléments du carrousel */
 
@@ -44,6 +44,7 @@
         let elmCarrousel__figure__img = document.createElement('img');
         elmCarrousel__figure__img.setAttribute('src', elmImg.getAttribute('src'))
         elmCarrousel__figure__img.classList.add('carrousel__figure__img')
+        elmCarrousel__figure__img.dataset.index = index
         elmCarrousel__figure.appendChild(elmCarrousel__figure__img);
     }
 
@@ -59,6 +60,16 @@
         elmCarrousel__form__radio.dataset.index = index;
         index++;
         elmCarrousel__form.appendChild(elmCarrousel__form__radio);
+
+        /*------------------------ écouteur sur radio pour afficher une nouvelle image */
+        elmCarrousel__form__radio.addEventListener('mousedown', function(){
+            console.log(this.dataset.index)
+
+
+
+            elmCarrousel__figure.children[this.dataset.index].classList.add('carrousel__figure__img--activer');
+
+        })
     }
 
     elmBtnModale.addEventListener('mousedown', function(){
