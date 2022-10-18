@@ -57,7 +57,8 @@
         elmCarrousel__form__radio.setAttribute('classe', 'carrousel__form__radio');
         elmCarrousel__form__radio.setAttribute('type', 'radio');
         elmCarrousel__form__radio.dataset.index = index;
-
+        index++;
+        elmCarrousel__form.appendChild(elmCarrousel__form__radio);
     }
 
     elmBtnModale.addEventListener('mousedown', function(){

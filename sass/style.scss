@@ -45,3 +45,13 @@
 .carrousel__figure__img--activer{
 
 }
+
+.carrousel__form{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
