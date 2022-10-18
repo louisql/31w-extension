@@ -1,5 +1,9 @@
 (function(){
     console.log("carrousel")
+    /*---------------------------------------- Initialisation des compteurs */
+    let index = 0;
+
+
     /*---------------------------------------- Les éléments du carrousel */
 
     /*Le conteneur principal du carrousel */
@@ -26,9 +30,14 @@
         console.log(elmImg.getAttribute('src'));
 
         ajouter_img_carrousel(elmImg);
-        // ajouter_radio_carrousel();
+        ajouter_radio_carrousel();
 
     }
+
+    /**
+     *  ajoute une image au carrousel
+     * @param {*} elmImg une image de la galerie
+     */
 
     function ajouter_img_carrousel(elmImg){
         //elmImg représente une image de la galerie
@@ -36,6 +45,19 @@
         elmCarrousel__figure__img.setAttribute('src', elmImg.getAttribute('src'))
         elmCarrousel__figure__img.classList.add('carrousel__figure__img')
         elmCarrousel__figure.appendChild(elmCarrousel__figure__img);
+    }
+
+    /**
+     * Ajoute un radio bouton dans le carrousel
+     */
+
+    function ajouter_radio_carrousel(){
+        let elmCarrousel__form__radio = document.createElement('input');
+        elmCarrousel__form__radio.setAttribute('name', 'carrousel__form__radio');
+        elmCarrousel__form__radio.setAttribute('classe', 'carrousel__form__radio');
+        elmCarrousel__form__radio.setAttribute('type', 'radio');
+        elmCarrousel__form__radio.dataset.index = index;
+
     }
 
     elmBtnModale.addEventListener('mousedown', function(){
