@@ -18,9 +18,16 @@
 
     /*---------------------------------------- Les éléments de la galerie */
         /*Le conteneur principal de la galerie */
-    let elmGalerie = document.querySelector(".galerie")
+    let elmGalerie = document.querySelector(".galerie");
+    let elmGalerieImg = document.querySelectorAll(".galerie figure img");
 
+    /*---------------------------------- Étape 1 parcourir les images de la gallerie */
+    for (const elmImg of elmGalerieImg){
+        console.log(elmImg.getAttribute('src'));
 
+        ajouter_img_carrousel();
+        ajouter_radio_carrousel();
+    }
 
     elmBtnModale.addEventListener('mousedown', function(){
         console.log("bouton boite modale")
