@@ -14,6 +14,13 @@
   /* Bouton temporaire pour ouvrir le carrousel */
   let elmBtnModaleFermer = document.querySelector(".btn_fermer");
 
+  /* Bouton pour accéder à la photo suivante sur le carrousel */
+  let elmBtnModaleSuivant = document.querySelector(".btn_droite");
+  
+  /* Bouton pour accéder à la photo précédente sur le carrousel */
+  let elmBtnModalePrecedent = document.querySelector(".btn_gauche");
+
+
   /* figure qui contiendra l'ensemble  des images du carrousel */
   let elmCarrousel__figure = document.querySelector(".carrousel__figure");
 
@@ -27,12 +34,24 @@
 
   /*---------------------------------- Étape 1 parcourir les images de la gallerie */
   for (const elmImg of elmGalerieImg) {
+    
     console.log(elmImg.getAttribute("src"));
     elmImg.dataset.index = index;
     ajouter_img_carrousel(elmImg);
     ajouter_radio_carrousel();
     elmImg.addEventListener('mousedown', function(){
-        console.log('galerie');
+      console.log('galerie');
+      let imageActive = document.querySelector(".carrousel__figure__img--activer");
+      if (typeof imageActive !== 'undefined')
+      { 
+      console.log(imageActive)
+      let indexActif = imageActive.dataset.index;
+      console.log(indexActif)
+      
+      imageActive.classList.remove(
+        "carrousel__figure__img--activer"
+        );
+      }
         console.log('elmImg.dataset.index ', this.dataset.index)
         elmCarrousel.classList.add("carrousel--ouvrir");
         elmCarrousel__figure.children[this.dataset.index].classList.add(
@@ -82,6 +101,14 @@
         );
       }
 
+      if(this.dataset.index != 0){
+        console.log('test retrait classe')
+        elmCarrousel__figure.children[0].classList.remove(
+          "carrousel__figure__img--activer"
+        );
+      }
+
+
       elmCarrousel__figure.children[this.dataset.index].classList.add(
         "carrousel__figure__img--activer"
       );
@@ -94,10 +121,54 @@
   elmBtnModale.addEventListener("mousedown", function () {
     console.log("bouton boite modale");
     elmCarrousel.classList.add("carrousel--ouvrir");
+    elmCarrousel__figure.children[0].classList.add(
+      "carrousel__figure__img--activer"
+    );
   });
 
   elmBtnModaleFermer.addEventListener("mousedown", function () {
     console.log("bouton boite modale");
     elmCarrousel.classList.remove("carrousel--ouvrir");
   });
+
+  elmBtnModalePrecedent.addEventListener("mousedown", function () {
+    let imageActive = document.querySelector(".carrousel__figure__img--activer");
+    console.log(imageActive)
+    let indexActif = imageActive.dataset.index;
+    console.log(indexActif)
+
+    elmCarrousel__figure.children[indexActif].classList.remove(
+      "carrousel__figure__img--activer"
+    );
+
+    if (indexActif != 0) indexActif--;
+    else indexActif = index - 1 ;
+
+    elmCarrousel__figure.children[indexActif].classList.add(
+      "carrousel__figure__img--activer"
+    );
+    elmCarrousel__form.children[indexActif].checked = true;
+  })
+
+  elmBtnModaleSuivant.addEventListener("mousedown", function () {
+    let imageActive = document.querySelector(".carrousel__figure__img--activer");
+    console.log(imageActive)
+    let indexActif = imageActive.dataset.index;
+    console.log(indexActif)
+
+    elmCarrousel__figure.children[indexActif].classList.remove(
+      "carrousel__figure__img--activer"
+    );
+
+    if (indexActif != index -1 ) indexActif++;
+    else indexActif = 0;
+
+
+    elmCarrousel__figure.children[indexActif].classList.add(
+      "carrousel__figure__img--activer"
+    );
+    elmCarrousel__form.children[indexActif].checked = true;
+
+  })
+
 })();
