@@ -42,7 +42,7 @@
     elmImg.addEventListener('mousedown', function(){
       console.log('galerie');
       let imageActive = document.querySelector(".carrousel__figure__img--activer");
-      if (typeof imageActive !== 'undefined')
+      if (imageActive !== null)
       { 
       console.log(imageActive)
       let indexActif = imageActive.dataset.index;
